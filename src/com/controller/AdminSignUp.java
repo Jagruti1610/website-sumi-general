@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.connect.DatabaseConnect;
+
 
 public class AdminSignUp extends HttpServlet {
 	
@@ -29,14 +31,11 @@ public class AdminSignUp extends HttpServlet {
 		
 		 try {
 			 
-			    Class.forName("com.mysql.jdbc.Driver");
-			    // loads mysql driver
-
-			    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sumi_production", "root",""); 
+			   	DatabaseConnect con=new DatabaseConnect(); 
 
 			    String query = "insert into admin_login values(default,?,?)";
 
-			    PreparedStatement ps = con.prepareStatement(query); // generates sql query			   
+			    PreparedStatement ps = con.getConnection().prepareStatement(query); // generates sql query			   
 			    ps.setString(1, userName);
 			    ps.setString(2, password);
 			 //   ps.setInt(5, Integer.parseInt(age));
@@ -47,9 +46,9 @@ public class AdminSignUp extends HttpServlet {
 			    ps.executeUpdate(); // execute it on test database
 			    System.out.println("successfuly inserted");
 			    ps.close();
-			    con.close();
+			    con.getConnection().close();
 			    out.println("<html><body><script>alert('Successfully registered')</script></body></html>");
-			   } catch (ClassNotFoundException | SQLException e) {
+			   } catch (SQLException e) {
 			    // TODO Auto-generated catch block
 			    e.printStackTrace();
 			   }

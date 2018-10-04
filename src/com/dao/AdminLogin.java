@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.connect.DatabaseConnect;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class AdminLogin extends HttpServlet{
+public class AdminLogin extends HttpServlet{ 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		System.out.println("In admin login");
 		
@@ -27,15 +29,11 @@ public class AdminLogin extends HttpServlet{
 		String password=request.getParameter("pwd");
 		String uname,pwd = null;
 				
-		try {
-					 
-				Class.forName("com.mysql.jdbc.Driver");
-					    // loads mysql driver
-
-				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sumi_production", "root",""); 
-
+		try { 
+				DatabaseConnect con=new DatabaseConnect();
+				
 				String query = "select * from admin_login";
-				Statement st = con.createStatement();				
+				Statement st = con.getConnection().createStatement();				
 				ResultSet rs = st.executeQuery(query);
 				
 				System.out.println("++++++= "+userName);
@@ -52,30 +50,26 @@ public class AdminLogin extends HttpServlet{
 				{
 					response.sendRedirect("adminHomePage.jsp");
 					System.out.println("Successfully Logged in");
-					con.close();
+					con.getConnection().close();
 					return;
 					
 				}
 				else
 				{
 					response.sendRedirect("adminErrorPage.jsp");
-					con.close();
+					con.getConnection().close();
 					return;
 				}
 				
 				
-				} catch (ClassNotFoundException | SQLException e) {
+				} catch (SQLException e) {
 				    // TODO Auto-generated catch block
 					    e.printStackTrace();
 				 }finally{
 					 
 				 }
 		
-		
-				 
-				 		
-		
-		
 	}
 
 }
+
