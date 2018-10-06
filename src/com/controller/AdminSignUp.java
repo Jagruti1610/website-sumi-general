@@ -7,14 +7,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.connect.DatabaseConnect;
-
+import javax.sql.DataSource;
 
 public class AdminSignUp extends HttpServlet {
 	
@@ -24,34 +25,36 @@ public class AdminSignUp extends HttpServlet {
 
 		response.setContentType("text/html");  
 		PrintWriter out = response.getWriter();  
-		System.out.println("In admin sign up");
-		          
+				          
 		String userName=request.getParameter("signUpEmail");  
 		String password=request.getParameter("signUpPwd");  
 		
 		 try {
 			 
-			   	DatabaseConnect con=new DatabaseConnect(); 
+			 	Context ctx =new InitialContext();
+				
+			 	DataSource ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/javabase");
+			 	Connection con=ds.getConnection(); 
 
 			    String query = "insert into admin_login values(default,?,?)";
 
-			    PreparedStatement ps = con.getConnection().prepareStatement(query); // generates sql query			   
+			    PreparedStatement ps = con.prepareStatement(query); // generates sql query			   
 			    ps.setString(1, userName);
 			    ps.setString(2, password);
-			 //   ps.setInt(5, Integer.parseInt(age));
-			    System.out.println("++++++= "+userName);
-				System.out.println("++++++= "+password);
+			 //   ps.setInt(3, Integer.parseInt(id));
 			   
 
 			    ps.executeUpdate(); // execute it on test database
-			    System.out.println("successfuly inserted");
 			    ps.close();
-			    con.getConnection().close();
+			    con.close();
 			    out.println("<html><body><script>alert('Successfully registered')</script></body></html>");
 			   } catch (SQLException e) {
 			    // TODO Auto-generated catch block
 			    e.printStackTrace();
-			   }
+			   } catch (NamingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		 
 		 		RequestDispatcher rd = request.getRequestDispatcher("adminLogin.jsp");
 		 		rd.forward(request, response);
