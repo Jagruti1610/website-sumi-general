@@ -1,11 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+@import url("https://fonts.googleapis.com/css?family=Taviraj:500");
+@import url("https://fonts.googleapis.com/css?family=Roboto:500");
 
 html, body {
     margin: 0px;
     padding: 0px;
     
 }
+
 
 
 /* css for admin login starts from below 
@@ -22,6 +25,10 @@ input[type=text], input[type=password] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+}
+
+input[type=text], input[type=password]:: after{
+	clear:both;
 }
 
 button {
@@ -110,7 +117,7 @@ span.psw {
 }
         
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-      background-color:#84DDE7;
+      background-color:#D5D8DC ;
 }
 
 .navbar-brand{
@@ -133,7 +140,9 @@ span.psw {
 }
 
 
-.sumiWelcomeNote{
-	font-family: 'Source Sans Pro', sans-serif;
+.container{
+	font-family: 'Open Sans','Source Sans Pro', sans-serif;
 	font-size: 15px;
+	margin-left:25px;
 }
+
