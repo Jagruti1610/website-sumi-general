@@ -48,7 +48,7 @@ public class AdminLogin extends HttpServlet{
 				
 				if(userName.equals(userName) && password.equals(pwd))
 				{
-					response.sendRedirect("adminHomePage.jsp");
+					request.getRequestDispatcher("adminHomePage.jsp").forward(request,response);;
 					System.out.println("Successfully Logged in");
 					con.close();
 					return;
@@ -56,7 +56,7 @@ public class AdminLogin extends HttpServlet{
 				}
 				else
 				{
-					response.sendRedirect("adminErrorPage.jsp");
+					request.getRequestDispatcher("adminErrorPage.jsp").forward(request, response);
 					con.close();
 					return;
 				}
