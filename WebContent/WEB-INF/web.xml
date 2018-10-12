@@ -11,58 +11,73 @@
   </welcome-file-list>
   
   <resource-ref>
-        <res-ref-name>jdbc/javabase</res-ref-name>
-        <res-type>javax.sql.DataSource</res-type>
-        <res-auth>Container</res-auth>
-    </resource-ref>
-  	
-  	  
-	<servlet>  
-		<servlet-name>AdminSignUp</servlet-name>  
-		<servlet-class>com.controller.AdminSignUp</servlet-class>  
-	</servlet>  
-	  
-	<servlet-mapping>  
-		<servlet-name>AdminSignUp</servlet-name>  
-		<url-pattern>/AdminSignUp</url-pattern>  
-	</servlet-mapping>  
-	
-	
-	<servlet>  
-		<servlet-name>AdminLogin</servlet-name>  
-		<servlet-class>com.controller.AdminLogin</servlet-class>  
-	</servlet>  
-	  
-	<servlet-mapping>  
-		<servlet-name>AdminLogin</servlet-name>  
-		<url-pattern>/AdminLogin</url-pattern>  
-	</servlet-mapping> 
-	  
-	 
-	 <servlet>  
-		<servlet-name>AdminCreateJob</servlet-name>  
-		<servlet-class>com.controller.AdminCreateJob</servlet-class>  
-	</servlet>  
-	  
-	<servlet-mapping>  
-		<servlet-name>AdminCreateJob</servlet-name>  
-		<url-pattern>/AdminCreateJob</url-pattern>  
-	</servlet-mapping>  
-	
-	
-	 <servlet>  
-		<servlet-name>CandidateViewJob</servlet-name>  
-		<servlet-class>com.controller.CandidateViewJob</servlet-class>  
-	</servlet>  
-	  
-	<servlet-mapping>  
-		<servlet-name>CandidateViewJob</servlet-name>  
-		<url-pattern>/CandidateViewJob</url-pattern>  
-	</servlet-mapping>  
-	
-	
+    <res-ref-name>jdbc/javabase</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
   
- 
+  <servlet>
+    <servlet-name>AdminSignUp</servlet-name>
+    <servlet-class>com.controller.AdminSignUp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminSignUp</servlet-name>
+    <url-pattern>/AdminSignUp</url-pattern>
+  </servlet-mapping>
+  <servlet>
   
+    <servlet-name>AdminLogin</servlet-name>
+    <servlet-class>com.controller.AdminLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLogin</servlet-name>
+    <url-pattern>/AdminLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  
+    <servlet-name>AdminCreateJob</servlet-name>
+    <servlet-class>com.controller.AdminCreateJob</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminCreateJob</servlet-name>
+    <url-pattern>/AdminCreateJob</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  
+    <servlet-name>CandidateViewJob</servlet-name>
+    <servlet-class>com.controller.CandidateViewJob</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CandidateViewJob</servlet-name>
+    <url-pattern>/CandidateViewJob</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>FetchOneRecord</servlet-name>
+    <servlet-class>com.controller.FetchOneRecord</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FetchOneRecord</servlet-name>
+    <url-pattern>/FetchOneRecord</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ClientContact</servlet-name>
+    <servlet-class>com.controller.ClientContact</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ClientContact</servlet-name>
+    <url-pattern>/ClientContact</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+	  <servlet-name>JobApplicantServlet</servlet-name>
+	   <servlet-class>com.controller.JobApplicantServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>JobApplicantServlet</servlet-name>
+    <url-pattern>/JobApplicantServlet</url-pattern>
+  </servlet-mapping>
   
 </web-app>
