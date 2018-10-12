@@ -3,7 +3,6 @@ package com.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -42,12 +41,10 @@ public class AdminSignUp extends HttpServlet {
 			    ps.setString(1, userName);
 			    ps.setString(2, password);
 			 //   ps.setInt(3, Integer.parseInt(id));
-			   
+			    ps.executeUpdate();
 
-			    ps.executeUpdate(); // execute it on test database
-			    ps.close();
-			    con.close();
-			    out.println("<html><body><script>alert('Successfully registered')</script></body></html>");
+			    request.getRequestDispatcher("adminLogin.jsp");
+			    out.println("<html><body><script>alert('Registered successfully')</script></body></html>");
 			   } catch (SQLException e) {
 			    // TODO Auto-generated catch block
 			    e.printStackTrace();
