@@ -21,8 +21,9 @@ import java.util.List;
 import javax.sql.DataSource;
 import com.util.DataSourceFactory;
 import com.model.Jobs;
+import java.io.Serializable;
 
-public class CandidateViewJobDAO {
+public class CandidateViewJobDAO implements Serializable {
 	
 	DataSource dataSource = null;
 	
