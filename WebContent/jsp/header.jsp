@@ -32,9 +32,9 @@
 	<div id="menu-nav-bar">
 	   <nav class="navbar navbar-fixed-top navbar-light" >
 	  	
-	       <img class="logo" id="logoImgId" src="${pageContext.request.contextPath}/images/logo.png">
+	       <!-- img class="logo" id="logoImgId" src="${pageContext.request.contextPath}/images/logo.png">
 	    	
-	       <a id="logoName" class="navbar-brand" href="index.jsp">Sumi Services</a>
+	       <a id="logoName" class="navbar-brand" href="index.jsp">Sumi Services</a-->
 	           <div class="collapse navbar-collapse" id="myNavbar">
 			      <ul class="nav navbar-nav">
 			        <li class="active"><a href="#">About Us</a></li>
@@ -50,7 +50,7 @@
 			        <li class="dropdown">
 			          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Contact Us<span class="caret"></span></a>
 			          <ul class="dropdown-menu" role="menu">
-			            <li><a href="adminLogin.jsp">Admin</a></li>
+			            <li><a href="adminHomePage.jsp">Admin</a></li>
 			            <li><a href="clientContact.jsp">Client</a></li>
 			            <li><a href="email.jsp">Email</a></li>
 			          </ul>
