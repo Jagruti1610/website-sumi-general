@@ -5,20 +5,39 @@ import java.io.InputStream;
 
 public class JobApplicant {
 
-	InputStream resume;
+	InputStream content;
+	String contentType;
+	String fileName;
 	String alternateContact;
 	String contact;
 	String applicantLocation;
 	String jobTitle;
+	String email;
 	String name;
 	int applicantId;
 	
-	public InputStream getResume() {
-		return resume;
+	
+	public String fileName() {
+		return fileName;
 	}
-	public void setResume(InputStream resume) {
-		this.resume = resume;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
+	
+	public InputStream content() {
+		return content;
+	}
+	public void setContent(InputStream content) {
+		this.content = content;
+	}
+	
+	public String contentType() {
+		return contentType;
+	}
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
+	
 	public String getAlternateContact() {
 		return alternateContact;
 	}
@@ -43,6 +62,14 @@ public class JobApplicant {
 	public void setJobTitle(String jobTitle) {
 		this.jobTitle = jobTitle;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public String getName() {
 		return name;
 	}
