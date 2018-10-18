@@ -12,14 +12,19 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import com.model.Client;
 
 import java.util.ArrayList;
 import java.util.List;
 import com.model.JobApplicant;
+import java.io.Serializable;
 
-
-public class JobApplicantDAO {
+// SAVES TO DATABASE  WHEN APPLICANT APPLIES TO A JOB
+public class JobApplicantDAO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7559180223901376732L;
 	
 	DataSource dataSource=null;
 	
@@ -28,7 +33,8 @@ public class JobApplicantDAO {
 		this.dataSource=dataSource;
 	}
 	
-	public void jobApplicantDataSubmit(String name, String jobTitle, String location, String contact, String alternateContact, InputStream file ) throws SQLException
+	public void jobApplicantDataSubmit(String name, String email, String jobTitle, String location, String contact,
+			String alternateContact, String fileName, String contentType, InputStream content) throws SQLException
 	{
 		List<JobApplicant> jobApplicantList=new ArrayList<>();
 		Context ctx=null;
@@ -40,14 +46,17 @@ public class JobApplicantDAO {
 			ctx=new InitialContext();
 			DataSource ds=(DataSource) ctx.lookup("java:/comp/env/jdbc/javabase");
 			con=ds.getConnection();
-			stmt=con.prepareStatement("insert into job_applicant_info values (default,?,?,?,?,?,?)");
+			stmt=con.prepareStatement("insert into job_applicant_info values (default,?,?,?,?,?,?,?,?,?)");
 			
 			stmt.setString(1, name);
-			stmt.setString(2, jobTitle);
-			stmt.setString(3, location);
-			stmt.setString(4, contact);
-			stmt.setString(5, alternateContact);
-			stmt.setBinaryStream(6, file);
+			stmt.setString(2, email);
+			stmt.setString(3, jobTitle);
+			stmt.setString(4, location);
+			stmt.setString(5, contact);
+			stmt.setString(6, alternateContact);
+			stmt.setString(7, fileName);
+			stmt.setString(8, contentType);
+			stmt.setBinaryStream(9, content);
 			
 			stmt.executeUpdate();
 			
@@ -73,6 +82,7 @@ public class JobApplicantDAO {
 				
 		
 	}
+
 	
 	
 	
