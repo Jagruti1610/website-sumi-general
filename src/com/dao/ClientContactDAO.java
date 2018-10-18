@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.sql.Connection;
+import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,8 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ClientContactDAO {
+public class ClientContactDAO implements Serializable{
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6290891851973668635L;
 	DataSource dataSource=null;
 
 	public ClientContactDAO(DataSource dataSource) {
