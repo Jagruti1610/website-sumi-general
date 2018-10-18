@@ -25,17 +25,13 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.model.Jobs;
 
+
 public class FetchOneRecord extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
-
-	
-    	
 	
 	public FetchOneRecord(){}
 	
-	
-
 	public List<Jobs> fetchJobDetail(int id) throws SQLException {  
 		List<Jobs> jobDetailFetchList = new ArrayList<Jobs>();        
       
