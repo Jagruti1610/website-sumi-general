@@ -19,6 +19,8 @@ import javax.sql.DataSource;
 
 public class AdminCreateJob extends HttpServlet {
 	
+	private static final long serialVersionUID = 1L;
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)  
             throws ServletException, IOException {  
 		System.out.println("In admin create job");
@@ -62,7 +64,7 @@ public class AdminCreateJob extends HttpServlet {
 			System.out.println("++++++= "+desc);
 		   
 
-		    ps.executeUpdate(); // execute it on test database
+		    ps.executeUpdate(); 
 		    System.out.println("successfuly inserted");
 		    ps.close();
 		    con.close();
