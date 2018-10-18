@@ -290,6 +290,10 @@
 						
 						<div class="clear"></div>
 						
+						<input type="text" placeholder="Email Id" name="candidateEmailTextbox" id="candidateNameTextbox" required>
+						
+						<div class="clear"></div>
+						
 						
 						<input type="text" placeholder="Job Title" name="candidateJobTitleTextbox" id="candidateJobTitleTextbox" required>
 						
