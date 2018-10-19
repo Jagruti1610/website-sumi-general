@@ -57,25 +57,32 @@
 	<script>
 		$(document).ready(function(){			
 			$('#applicantInfoDataTable').DataTable({
-				
-				"scrollY":        "200px",
+				"bDestroy": true,
+				'bSort': false,
+    		  	"scrollY":        "200px",
 			    "scrollCollapse": true,
-			  //  "paging":         false,
-				dom: 'lfrtipB',
-                buttons: [
+			    "paging":         true,
+				  dom: 'lfrtipB',
+                  buttons: [
                             'copy', 'csv', 'excel', 'pdf', 'print'
-                        ]
+                        ],
+                 lengthMenu: [[5, 10, 20, -1], [5, 10, 20, "All"]]
+				
+			
+				
+				
 			});
 			
-			
-		/*	$.post("${pageContext.request.contextPath}/FetchAllJobApplicants",  function(responseJson) {
+		/*	
+			$.post("${pageContext.request.contextPath}/FetchAllJobApplicants",  function(responseJson) {
 				//alert("reponseJSon= "+responseJson);
 				  var d="";
 				  $("#applicantInfoDataTable").empty().append(d);
 			      var $tableId = $("#applicantInfoDataTable");	
+			      var myTable = $("#applicantInfoDataTable").DataTable();
 			      
 			      $.each(responseJson, function(key, value){
-			    	  $("<tr>").appendTo($tableId)
+			 /*   	  $("<tr>").appendTo($tableId)
 			    	  .append($("<td>").text(value.applicantId))
 			    	  .append($("<td>").text(value.name))
 			    	  .append($("<td>").text(value.email))	
@@ -86,6 +93,8 @@
 			      //    .append($("<td><a href="file?id=value.applicantId">download</a>);
 			          .append($("<td><a href=file?id="+value.applicantId+">download</a>"));
 			    	  
+			    	  myTable.rows.add(['value.applicantId', 'value.name', 'value.email', 'value.jobTitle','value.applicantLocation','value.contact', 'value.alternateContact', "<a href=file?id="+value.applicantId+">download</a>"]);
+			    	  myTable.draw();
 			    	  
 			      });
 			      
@@ -99,23 +108,51 @@
 		 
 			});
 			
-		
-			*/
+		*/
 			
 			$.ajax ({
 			    url: "${pageContext.request.contextPath}/FetchAllJobApplicants",
 			    type: "POST",
-			   // data: JSON.stringify({data:"test"}),
-			    responseType: "blob",
-			  //  contentType: "application/json; charset=utf-8",
 			    success: function(responseJson) {
-					//alert("reponseJSon= "+responseJson);
-					  var d="";
-					  $("#applicantInfoDataTable").empty().append(d);
-				      var $tableId = $("#applicantInfoDataTable");	
-				      
+					
+			    	/*	var myTableDiv = document.getElementById("applicantInfoDataTableDiv");
+				  		var table = document.createElement('TABLE');
+				  		table.id='applicantInfoTable';*/
+				  	//	table.border='1';
+				  		
+
+				  		/*var header = table.createTHead();
+				  		var row = header.insertRow(0);
+				  		var cell = row.insertCell(0);
+				  		var cell1 = row.insertCell(1);
+				  		var cell2 = row.insertCell(2);
+				  		var cell3 = row.insertCell(3);
+				  		var cell4 = row.insertCell(4);
+				  		var cell5 = row.insertCell(5);
+				  		var cell6 = row.insertCell(6);
+				  		var cell7 = row.insertCell(7);
+				  		cell.innerHTML = "<b>Applicant ID</b>";
+				  		cell1.innerHTML = "<b>Name</b>";
+				  		cell2.innerHTML = "<b>Email</b>";
+				  		cell3.innerHTML = "<b>Job Title</b>";
+				  		cell4.innerHTML = "<b>Location</b>";
+				  		cell5.innerHTML = "<b>Contact</b>";
+				  		cell6.innerHTML = "<b>Alternate Contact</b>";
+				  		cell7.innerHTML = "<b>Resume</b>";
+
+				   	//	var table = document.getElementById("applicantInfoDataTable");
+				   	//	var row   = table.insertRow(0);				   			   		
+				   	//  row.insertCell(0).outerHTML = "<th>Applicant ID</th><th>Name</th><th>Email</th><th>Job Title</th><th>Location</th><th>Contact</th><th>Alternate Contact</th><th>Resume</th>";
+				   		
+				   		var tableBody = document.createElement('TBODY');
+						table.appendChild(tableBody);
+					   	
+			//			var $tableId = $("#applicantInfoDataTable");
+				//		$("<tbody>").appendTo($tableId)
+
+				   		 
 				      $.each(responseJson, function(key, value){
-				    	  $("<tr>").appendTo($tableId)
+				    	   $("<tr>").appendTo(table)
 				    	  .append($("<td>").text(value.applicantId))
 				    	  .append($("<td>").text(value.name))
 				    	  .append($("<td>").text(value.email))	
@@ -125,12 +162,41 @@
 				          .append($("<td>").text(value.alternateContact))
 				      //    .append($("<td><a href="file?id=value.applicantId">download</a>);
 				          .append($("<td><a href=file?id="+value.applicantId+">download</a>"));
-				    	  
-				    	  
+				          
+				      
 			        //
-			    })
-				}
-			});
+			    	})  		// closes $.each loop
+			    	myTableDiv.appendChild(table);
+			    	$("#applicantInfoTable").dataTable();*/
+			    	
+			    	
+			    	
+			    	//table.DataTable();
+			    	
+			    	
+			    	/////////////////////////////// ANOTHER TRIAL
+			    	
+			    	var t = $('#applicantInfoDataTable').DataTable();
+	                t.clear();
+	                // ADD acquired data items to the DataTable
+	                $.each(responseJson, function(key,value) {
+	                    t.row.add( [
+	                        value.applicantId,
+	                        value.name,
+	                        value.email,
+	                        value.jobTitle,
+	                        value.applicantLocation,
+	                        value.contact,
+	                        value.alternateContact,
+	                        "<a href=file?id="+value.applicantId+">download</a>"
+	                    ] ).draw();
+	                });
+			    	
+	                $("#applicantInfoDataTable").dataTable();
+			    	
+				}	// closing success function
+			});	// closes ajax
+			
 			
 		});
 	</script>
@@ -181,7 +247,7 @@
 		</form>
 		
 		
-		<div>
+		<div id="applicantInfoDataTableDiv">
 			<table id="applicantInfoDataTable" class="table table-striped table-hover table-bordered table-condensed">
 				<thead>
 					 <tr>
@@ -192,9 +258,6 @@
 		                <th>Location</th>
 		                <th>Contact</th>
 		                <th>Alternate Contact</th>
-		                <!-- th>FileName</th>
-		                <th>Content Type</th>
-		                <th>Content</th-->
 		                <th>Resume</th>
 		            </tr>
 	        	</thead> 
