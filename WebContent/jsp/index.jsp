@@ -47,23 +47,15 @@
 
 	<div class="container">
 
-		<hr>
-        <div class="icon-bar">
-           
-            <br />
-                <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-2x"></i></a>
-	            <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-2x"></i></a>
-	            <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-google-plus-square fa-2x"></i></a>
-	            <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-2x"></i></a>
-	            <a href="#"><i id="social-li" class="fa fa-linkedin-square fa-2x"></i></a>
-	            <a href="#"><i id="social-insta" class="fa fa-instagram-square fa-2x"></i></a>
-	            <a href="#"><i id="social-pin" class="fa fa-pinterest-square fa-2x"></i></a>
-	            <!-- a href="#"><i id="social-github" class="fa fa-github-square fa-3x social"></i></a-->
-	            <a href="#"><i id="social-whatsapp" class="fa fa-whatsapp" ></i></a>
-</div>
-    <hr>
-</div>
-	
+		<jsp:include page="stickyIcons.jsp" flush="true" />
+       
+		
+		
+    </div>
+  
+
+		
+		
 
 </body>
 </html>
