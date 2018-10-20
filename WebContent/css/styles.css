@@ -155,6 +155,7 @@ span.psw {
     width: 2em;
     height: 1.5em;
     text-align: center;
+    border: none;
   }
   
   
@@ -175,15 +176,20 @@ i[class^="fa fa-"] {
  #social-tw:hover {
      color: #4099FF;
  }
- #social-gp:hover {
+ #social-li:hover {
      color: #d34836;
  }
- #social-em:hover {
-     color: #f39c12;
+ #social-insta:hover {
+     color: #3B5998;
+     
  }
  
+#social-whatsapp:hover{
+	color: #f39c12;
+}
  
-<!-- 
+ 
+/*
  @fa-google-plus-square: @fa-google-plus;
 @fa-google-plus: #dd4b39;
 @fa-instagram: #3f729b;
@@ -195,8 +201,8 @@ i[class^="fa fa-"] {
     color: @fa-google-plus-square;
   }
   
-  -->
-  
+ 
+*/  
   .fa-facebook-square {
   color: #3b5998;
 }
@@ -225,14 +231,15 @@ i[class^="fa fa-"] {
 
 #social-whatsapp {
   color: #25D366;  
-  transform: scale(1.2, 2.4);
+  transform: scale(2, 2.4);
+  width:2px;
 }
 
 
 .fa-instagram-square {
   position: relative;
   width: 26px;
-  height: 26px;
+  height: 28px;
   border-radius: 20%;
   background: radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf)
 }
@@ -241,8 +248,8 @@ i[class^="fa fa-"] {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 17px;
-  height: 17px;
+  width: 20px;
+  height: 20px;
   border: 2px solid #fff;
   transform: translate(-50%, -50%);
   content: ''
@@ -256,3 +263,18 @@ i[class^="fa fa-"] {
   border-radius: 50%
 }
   
+#sticky-icons-list{
+  list-style-type: none;
+  list-style: none;
+ /* margin:0 0 10px 0;
+  background:white; */
+  }
+  
+  
+ .icon-bar{     
+    position: fixed;
+    right:0;
+    top:400px;
+    
+    
+}
