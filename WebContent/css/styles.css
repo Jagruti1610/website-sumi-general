@@ -6,8 +6,8 @@
 
 
 html, body {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     
 }
 
@@ -91,7 +91,7 @@ span.psw {
 
 .nav{
 	font-size: 15px;
-	padding : 0px 0px 0px 130px;   /* top, right, bottom, left*/
+	padding : 0 0 0 130px;   /* top, right, bottom, left*/
 	
 	
 }
@@ -105,7 +105,7 @@ span.psw {
 	
 	
 	
-	/*padding :0px 20px 0px 20px;   top, right, bottom, left*/
+	/*padding :0 20 0 20;   top, right, bottom, left*/
 	
 }
 
@@ -125,14 +125,15 @@ span.psw {
 .navbar-brand{
 	
 	font-size: 50px;
-	padding :40px 40px 0px 80px;
+/*  padding :40px 40px 0 80px; */
+	padding :40px 0 0 0;
 	float:center;
 }
 
 .wrapper img{	
 	width: 100%;
 	height: auto;
-	margin-top:120px;
+	margin-top: 120px;
 	background-position: center;
   	background-repeat: no-repeat;
   	background-size: cover;
@@ -156,6 +157,7 @@ span.psw {
     height: 1.5em;
     text-align: center;
     border: none;
+    margin: 0;
   }
   
   
@@ -203,20 +205,26 @@ i[class^="fa fa-"] {
   
  
 */  
-  .fa-facebook-square {
+ .fa-facebook-square {
   color: #3b5998;
+  margin: 0 0 3px 0; /* so that there is space only at the bottom of icon */
 }
 .fa-linkedin-square {
-  color: #1985bc;  
+  color: #1985bc;
+  margin: 0 0 3px 0;   /* so that there is space only at the bottom of icon */
 }
 .fa-twitter-square {
-  color: #1da1f2;  
+  color: #1da1f2; 
+  margin: 0 0 3px 0;  /* so that there is space only at the bottom of icon */
 }
 .fa-google-plus-square {
-  color: #db4437  
+  color: #db4437;
+  margin: 0 0 3px 0;  /* so that there is space only at the bottom of icon */
+  
 }
 .fa-pinterest-square {
-  color: #bd081c;  
+  color: #bd081c; 
+  margin: 0 0 3px 0;   /* so that there is space only at the bottom of icon */
 }
 
 /*.fa-instagram-square {
@@ -241,6 +249,7 @@ i[class^="fa fa-"] {
   width: 26px;
   height: 28px;
   border-radius: 20%;
+  margin: 2px; /* To increase space between the top icon and instagram */
   background: radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf)
 }
 .fa-instagram-square:after,
@@ -260,21 +269,35 @@ i[class^="fa fa-"] {
 .fa-instagram-square:after {
   width: 9px;
   height: 9px;
-  border-radius: 50%
+  border-radius: 50%;
+  
 }
   
 #sticky-icons-list{
   list-style-type: none;
   list-style: none;
- /* margin:0 0 10px 0;
-  background:white; */
+ 
+  background:white; 
+ 
+  position: fixed;
+  right:0;
+  top:450px;
+  padding: 0;        /* to remove space the left */
+  border-radius: 15%;  /* for rounded-edges*/
+  
+  line-height: 0;  /* to remove white space at bottom */
+   -webkit-padding-start: 0;
+ 
+   
+  }
+  
+  .sticky-icons li{
+  	margin-right: -4px; /* negative space will remove top, right and bottom space */
+  	margin-top: -4px;
+  	margin-bottom: -4px; 
+  	
   }
   
   
- .icon-bar{     
-    position: fixed;
-    right:0;
-    top:400px;
-    
-    
-}
+  }
+ 
