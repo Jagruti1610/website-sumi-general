@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
-@import url("https://fonts.googleapis.com/css?family=Taviraj:500");
 @import url("https://fonts.googleapis.com/css?family=Roboto:500");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
@@ -73,10 +71,11 @@ span.psw {
 
 .logo{
 	
-	padding:5px 100px;
-	width: 25%;
-	height: auto;
+/*	padding:5px 100px; */
+	width: 10%;
+	height: 10%;
 	float: left;
+	margin-left: 25px;
 }
 
 
@@ -89,9 +88,11 @@ span.psw {
 }
 */
 
+/* gives space between COMAPANY NAME and menu bar */
 .nav{
 	font-size: 15px;
-	padding : 0 0 0 130px;   /* top, right, bottom, left*/
+	padding : 25px 0 0 20px;   /* top, right, bottom, left*/
+	
 	
 	
 }
@@ -101,7 +102,7 @@ span.psw {
 	
 	float: right;
 	background-color: white;
-	color:#1F618D;
+	/*color:#1F618D;*/
 	
 	
 	
@@ -109,24 +110,55 @@ span.psw {
 	
 }
 
+
+
 .navbar-nav{
 	font-weight:bold;
 	
 }
 
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-     background-image:none !important;
+.navbar-nav>li>.dropdown-menu {
+	 padding: 0;
 }
+
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a  {
+	 /* changes foregorund and background color of drop-down menus */
+	 
+	color: #1B4F72; /*palevioletred;*/      
+	font-weight:bold; 
+    background-color: #E0FBF6  ; /* darkslategrey*/
+	 
+	
+}
+
+/* hover for outer menu*/
+
+.nav>li>a:focus, .nav>li>a:hover{
+	background-color: #2ecc71;
+	border-bottom: 3px solid #2ecc71;
+}
+
         
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-      background-color:#D5D8DC ;
+      background-color: #2ecc71; 	/*#D5D8DC ;*/
 }
+
+
+/*
+.dropdown-menu > li > a{   
+	/* changes background color of drop-down menus */
+	/*color: palevioletred;       
+    background-color: darkslategrey;
+}
+*/
+
+/* distance between COMPANY NAME and COMPANY LOGO */
 
 .navbar-brand{
 	
 	font-size: 50px;
-/*  padding :40px 40px 0 80px; */
-	padding :40px 0 0 0;
+    padding : 40px 15px 20px 80px;
 	float:center;
 }
 
@@ -144,7 +176,7 @@ span.psw {
 
 
 .container{
-	font-family: 'Open Sans','Source Sans Pro', sans-serif;
+	font-family: 'Roboto','Source Sans Pro', sans-serif;
 	font-size: 15px;
 	margin-left:25px;
 }
@@ -249,7 +281,7 @@ i[class^="fa fa-"] {
   width: 26px;
   height: 28px;
   border-radius: 20%;
-  margin: 2px; /* To increase space between the top icon and instagram */
+  margin: 3px 6px 0  0; /* To increase space between the top icon and instagram */
   background: radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf)
 }
 .fa-instagram-square:after,
@@ -291,7 +323,8 @@ i[class^="fa fa-"] {
    
   }
   
-  .sticky-icons li{
+  .sticky-icons li
+  {
   	margin-right: -4px; /* negative space will remove top, right and bottom space */
   	margin-top: -4px;
   	margin-bottom: -4px; 
@@ -299,5 +332,8 @@ i[class^="fa fa-"] {
   }
   
   
-  }
  
+ .selected {  
+ /* background-color: #2ecc71;*/  
+  	border-bottom: 3px solid #2ecc71;
+}  
