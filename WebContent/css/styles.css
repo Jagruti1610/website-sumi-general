@@ -9,7 +9,14 @@ html, body {
     
 }
 
-
+hr{
+	background-color: #3FACF5;
+    color: #3FACF5;
+    border: #3FACF5;
+    height: 5px !important;
+    width: 150px !important;
+    border-radius: 50%;
+}
 
 /* css for admin login starts from below 
 form {
@@ -158,8 +165,9 @@ span.psw {
 .navbar-brand{
 	
 	font-size: 50px;
-    padding : 40px 15px 20px 80px;
+    padding : 40px 15px 20px 60px;
 	float:center;
+	
 }
 
 .wrapper img{	
@@ -174,11 +182,96 @@ span.psw {
  
 }
 
+/* img header for index.jsp page */
+
+#indexPageHeader{
+	width: 100%;
+	height: 100%;
+	margin-top: 120px;
+	background:url('../images/header-home-sunset.jpg');
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/dream.jpg");/*supported by others*/
+	/*orginal one*/
+	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/dream.jpg"); /* for chrome*/
+/*  chnages made
+	background-image: -webkit-linear-gradient(top, rgba(0, 128, 128, 0.3), rgba(0, 128, 128, 0.3)), url("../images/header-home-sunset.jpg");*/
+	
+	/* for new image
+	background-image: -webkit-linear-gradient(top, rgba(0, 128,128 , 0.3), rgba(0, 128, 128, 0.3)), url("../images/holding_Hands.jpg");
+	*/
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	position: absolute;
+	
+}
+
+
+#aboutUsHeader{
+	width: 100%;
+	height: 100%;
+	margin-top: 120px;
+	background-image: linear-gradient(to bottom, rgba(0, 255, 255, 0.7), rgba(0, 0, 0, 0.1)), url("../images/fist-bumping.jpg");/*supported by others*/
+	/*orginal one*/
+	background-image: -webkit-linear-gradient(top, rgba(0, 255, 255, 0.7), rgba(0, 0, 0, 0.1)), url("../images/fist-bumping.jpg"); /* for chrome*/
+/*  chnages made
+	background-image: -webkit-linear-gradient(top, rgba(0, 128, 128, 0.3), rgba(0, 128, 128, 0.3)), url("../images/header-home-sunset.jpg");*/
+	
+	/* for new image
+	background-image: -webkit-linear-gradient(top, rgba(0, 128,128 , 0.3), rgba(0, 128, 128, 0.3)), url("../images/holding_Hands.jpg");
+	*/
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	position: absolute;
+	
+}
+
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+
+
+	.overlay-img {
+		  z-index: 100;
+		  background-image: url("../images/sunset.jpg");
+		  background-repeat: no-repeat;
+		  position: absolute;
+		  left: 5%; 
+		  right:40%;
+		  top: 38%;
+		  width:758px;
+		  height: 313px;
+		  margin: 0 0 0 10px;
+		  border: none;
+		  position: absolute;
+		  border-radius: 30px/80px;
+    opacity: 0.9;
+    filter: brightness(120%);
+		}
+
+/**/
 
 .container{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 20px;
+	margin: 650px 150px 0 100px;
+	text-align: justify;
+}
+
+.pageTitle{
 	font-family: 'Roboto','Source Sans Pro', sans-serif;
-	font-size: 15px;
-	margin-left:25px;
+	font-size: 40px;
+	text-align: center;
 }
 
 <!-- social media icons -->
@@ -308,7 +401,7 @@ i[class^="fa fa-"] {
 #sticky-icons-list{
   list-style-type: none;
   list-style: none;
- 
+  font-size: 15px;
   background:white; 
  
   position: fixed;
@@ -327,6 +420,7 @@ i[class^="fa fa-"] {
   {
   	margin-right: -4px; /* negative space will remove top, right and bottom space */
   	margin-top: -4px;
+
   	margin-bottom: -4px; 
   	
   }
