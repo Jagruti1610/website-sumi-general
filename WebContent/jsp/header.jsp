@@ -61,7 +61,10 @@
 			$("#hrefServices").removeClass('selected');
 			$("#hrefCareers").removeClass('selected');
 			$("#hrefClients").removeClass('selected');
+			$("#hrefJobs").removeClass('selected');
 			$("#hrefTestimonials").removeClass('selected');
+			$("#hrefContacts").removeClass('selected');
+			
 			
 			if(clickNum==0)
 			{
@@ -73,6 +76,7 @@
 			{
 				document.getElementById("hrefIndustries").classList.add('selected');
 			}
+			
 			if(clickNum==2)
 			{
 				document.getElementById("hrefServices").classList.add('selected');
@@ -89,14 +93,23 @@
 			
 			if(clickNum==5)
 			{
+				document.getElementById("hrefJobs").classList.add('selected');
+			}
+			
+			if(clickNum==6)
+			{
 				document.getElementById("hrefTestimonials").classList.add('selected');
 			}
 		
 				
-			if(clickNum==6)
+			if(clickNum==7)
 			{
 				document.getElementById("hrefContacts").classList.add('selected');
 			}
+			 
+			
+			
+			
 				
 			
 		}
@@ -142,7 +155,7 @@
 			        <li ><a href="aboutUs.jsp" id="hrefAboutUs" onclick="reloadP(0);">About Us</a></li>
 			        
 			        <li class="dropdown ">
-			          <a class="dropdown-toggle " data-toggle="dropdown" href="#" id="hrefIndustries" ">Industries<span class="caret"></span></a>
+			          <a class="dropdown-toggle " data-toggle="dropdown" href="#" id="hrefIndustries">Industries<span class="caret"></span></a>
 			          <ul class="dropdown-menu nav" role="menu">
 			            <li><a href="#" onclick="reloadP(1);">I.T</a></li>
 			            <li><a href="#" onclick="reloadP(1);">Retail</a></li>
@@ -173,7 +186,6 @@
 				      <a class="dropdown-toggle " data-toggle="dropdown" href="#" id="hrefCareers" >Careers<span class="caret"></span></a>
 				     <!-- " -->
      	     				<ul class="dropdown-menu nav"  onclick="reloadP(3);">
-			                <li><a href="candidateViewJobs.jsp" onclick="reloadP(3);">Jobs Openings</a></li>
 			                <li><a href="careerWithUs.jsp" onclick="reloadP(3);">Career With Us</a></li>
 			                <li><a href="careerWithUs.jsp"  onclick="reloadP(3);">Career Tips</a></li>
 			              </ul>
@@ -181,9 +193,11 @@
 			        
 			        <li ><a href="clientContact.jsp" id="hrefClients" onclick="reloadP(4);">Client</a></li>
 			        
-			        <li ><a href="#" id="hrefTestimonials" onclick="reloadP(5);">Testimonials</a></li>
+			        <li><a href="candidateViewJobs.jsp" id="hrefJobs" onclick="reloadP(5);">Jobs</a></li>
 			        
-			        <li ><a href="#" id="hrefContacts" onclick="reloadP(6);">Contact Us</a></li>
+			        <li ><a href="#" id="hrefTestimonials" onclick="reloadP(6);">Testimonials</a></li>
+			        
+			        <li ><a href="#" id="hrefContacts" onclick="reloadP(7);">Contact Us</a></li>
 		
 		
 		<!-- NOt Required as of now >       
