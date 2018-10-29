@@ -27,7 +27,25 @@
 	
 	
 	<style>
+		
+		#text {
+		  z-index: 100;
+		  text-align: center;
+		  position: absolute;
+		  color: darkgray; /*#BE4C66;*/
+		  font-size: 100px;
+		  font-weight: bold;
+		  font-family: 'Roboto', sans-serif;
+		  left: 10%; 
+		  right:40%;
+		  top: 50%;
+		}
+		
+		
+		
 	
+		
+		
 	</style>
 	
 </head>
@@ -39,20 +57,32 @@
 	 </header>
 
 	
-	 <div class="wrapper">
-		<img src="${pageContext.request.contextPath}/images/header-home-sunset.jpg">
+	 <div id="indexPageHeader" class="">
+	 
+			
+		<!--  div id="text">
+			JOB
+		
+		</div-->
+		
+		<div class="overlay-img"></div>
+		
+		
+		
+		<div class="container">
+			 <jsp:include page="stickyIcons.jsp" flush="true" />
+		
+		<h1>Let's see if margin is in effect</h1>
+		
+		
+		
+    	</div>
+  
 
 	</div>
 
-
-	<div class="container">
-
-		<jsp:include page="stickyIcons.jsp" flush="true" />
-       
-		
-		
-    </div>
-  
+	
+	
 
 		
 		
