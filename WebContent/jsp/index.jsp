@@ -48,10 +48,12 @@
 		
 	</style>
 	
+	
+	
 </head>
 
 <body>
-
+		
 	<header>
 	        <jsp:include page="header.jsp" flush="true" />  
 	 </header>
@@ -69,7 +71,7 @@
 		
 		
 		
-		<div class="container">
+		<div class="indexContainer">
 			 <jsp:include page="stickyIcons.jsp" flush="true" />
 		
 		<h1>Let's see if margin is in effect</h1>
