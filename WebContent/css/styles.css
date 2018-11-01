@@ -59,7 +59,7 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-input[type=text], input[type=password]:: after{
+select, label, textarea, input[type=text],input[type=file], input[type=password]:: after{
 	clear:both;
 }
 
@@ -537,3 +537,36 @@ i[class^="fa fa-"] {
  /* background-color: #2ecc71;*/  
   	border-bottom: 3px solid #2ecc71;
 }  
+
+
+
+/*for contact.jsp page*/
+.indexContainer .form-group input[type=text],input[type=file], textarea, button, select{
+	margin: 15px 0 0 20px;
+    width: 282px; 
+    height: 40px;
+    float: right;
+}
+
+/*for contact.jsp page*/
+
+.indexContainer span{
+	float: left;
+	margin: 20px 0 0 0;
+}
+
+/*for contact.jsp page*/
+.indexContainer .left{
+	width: 60%;
+	float: left;
+}
+
+.indexContainer .right{
+	width: 40%;
+	float: right;
+}
+
+.indexContainer .glyphicon{
+	font-family: 'Source Sans Pro', sans-serif;
+	
+}
