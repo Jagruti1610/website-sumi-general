@@ -13,11 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
+import com.model.File;
+
 import java.io.PrintWriter;
 
 import com.dao.JobApplicantDAO;
 
 
+
+/* UPLOADS FILE IN BINARY FORMAT TO SERVER  */
 
 @MultipartConfig
 public class JobApplicantServlet extends HttpServlet {
@@ -48,7 +52,10 @@ public class JobApplicantServlet extends HttpServlet {
 	    String nameOfFile=fileName.toString();
 	    String contentType= nameOfFile.substring(nameOfFile.lastIndexOf(".") + 1);
 	    
-	    
+	  /* SIZE OF FILE */
+	    System.out.println((request.getPart("file").getSize())/1024);
+	    Double contentLength = (double) request.getPart("file").getSize();
+	    System.out.println("Length1111->= "+request.getHeaders("Content-Length"));
 	   
 	    System.out.println("FilePart= "+filePart);
 	    System.out.println("File extension= "+ contentType);
@@ -64,7 +71,7 @@ public class JobApplicantServlet extends HttpServlet {
 	    
 		try {
 			
-			jobApplicantDAO.jobApplicantDataSubmit(name, email, jobTitle, location, contact, alternateContact, fileName, contentType,  fileContent);
+			jobApplicantDAO.jobApplicantDataSubmit(name, email, jobTitle, location, contact, alternateContact, fileName, contentType, contentLength,  fileContent);
 			out.println("<html><body><script type=\"text/javascript\">");
 		    out.println("alert('Applied Successfully');");
 		//	out.println("location='candidateViewJobs.jsp';");
