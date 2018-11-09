@@ -39,6 +39,8 @@ public class FileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		 String fileId = request.getParameter("id");
+	/*	 String downloadFormat=request.getParameter("selectedFormat");
+	/*	 System.out.println("downloadFormat= "+downloadFormat);*/
 
 	        // Check if ID is supplied to the request.
 	     if (fileId == null) {
@@ -68,11 +70,19 @@ public class FileServlet extends HttpServlet {
 	        response.reset(); 
 	        response.setBufferSize(DEFAULT_BUFFER_SIZE);
 	        //response.setContentType(file.getContentType());
-	        response.setContentType(mimeType);
+	        
+	         response.setContentType(mimeType); /* TO DOWNLOAD IN THE DEFAULT FORMAT THE FILE WAS UPLOADED IN */
+	        
 	     //   response.setContentType("application/pdf");
+	      /*  if(downloadFormat.equals("pdf"))
+	        	 response.setContentType("application/pdf");
+	        else if(downloadFormat.equals("word")
+	        	response.setContentType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+	        */
+	        
 	        response.setHeader("Content-Length", String.valueOf(file.getLength()));
 	        response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getFileName() + "\"");
-	        
+
 
 	        // Prepare streams.
 	        BufferedInputStream input = null;
