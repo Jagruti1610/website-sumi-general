@@ -34,7 +34,7 @@ public class JobApplicantDAO implements Serializable{
 	}
 	
 	public void jobApplicantDataSubmit(String name, String email, String jobTitle, String location, String contact,
-			String alternateContact, String fileName, String contentType, InputStream content) throws SQLException
+			String alternateContact, String fileName, String contentType, Double contentLength,  InputStream content) throws SQLException
 	{
 		List<JobApplicant> jobApplicantList=new ArrayList<>();
 		Context ctx=null;
@@ -46,7 +46,7 @@ public class JobApplicantDAO implements Serializable{
 			ctx=new InitialContext();
 			DataSource ds=(DataSource) ctx.lookup("java:/comp/env/jdbc/javabase");
 			con=ds.getConnection();
-			stmt=con.prepareStatement("insert into job_applicant_info values (default,?,?,?,?,?,?,?,?,?)");
+			stmt=con.prepareStatement("insert into job_applicant_info values (default,?,?,?,?,?,?,?,?,?,?)");
 			
 			stmt.setString(1, name);
 			stmt.setString(2, email);
@@ -56,7 +56,8 @@ public class JobApplicantDAO implements Serializable{
 			stmt.setString(6, alternateContact);
 			stmt.setString(7, fileName);
 			stmt.setString(8, contentType);
-			stmt.setBinaryStream(9, content);
+			stmt.setDouble(9, contentLength);
+			stmt.setBinaryStream(10, content);
 			
 			stmt.executeUpdate();
 			
