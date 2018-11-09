@@ -40,7 +40,7 @@
 	
 	<div id="contactUsHeader">
 	
-		<div id="text">We nurture relationships</div>
+		<!-- div id="text">We nurture relationships</div-->
 	
 	
 		
@@ -57,11 +57,11 @@
 			  		<div class="form-group" >
 			  		 
 			  			<select>
-			  				<option>Select</option>
-					        <option>Job</option>
-					        <option>Career Guidance</option>
-					        <option>Empanelment</option>
-					        <option>Others</option>
+			  				<option value="Select">Select</option>
+					        <option value="Job">Job</option>
+					        <option value="Career Guidance">Career Guidance</option>
+					        <option value="Empanelment">Empanelment</option>
+					        <option value="Other">Other</option>
 					 </select>
 					 	<div class="clear"></div>
 					    <input placeholder="Name"  id="clientNameTextbox" name="clientNameTextbox" type="text" required>			    		
