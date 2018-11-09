@@ -1,0 +1,3 @@
+select, label, textarea, input[type=text],input[type=file], input[type=password]:: after{
+	clear:both;
+}
