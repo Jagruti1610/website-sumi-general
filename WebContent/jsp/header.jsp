@@ -110,11 +110,35 @@
 			
 			
 			
-				
+		}
+	
+		
+		function reloadP(num) {
 			
+		    sessionStorage.setItem("reloading", "true");
+		    sessionStorage.setItem("numToCall", num);
+		    document.location.reload();
 		}
 		
 		
+	
+	
+	/* to give the selection mark to user on page refresh */	
+		window.onbeforeunload = function() {
+			//  return "Are you sure you wish to leave the page?";
+			alert("1");
+			var beforeLoad=sessionStorage.getItem("numToCall");
+			if(beforeLoad==0 || beforeLoad==1 || beforeLoad==2 || beforeLoad==3 || beforeLoad==4 || beforeLoad==5 || beforeLoad==6 || beforeLoad==7)
+				reloadP(beforeLoad);
+			else {
+					alert("2");
+			     sessionStorage.removeItem("numToCall");
+			}
+			
+		}
+
+	
+		/* to give the when user navigates to the desired page */	
 		window.onload = function() {
 		    var reloading = sessionStorage.getItem("reloading");
 		    var num=sessionStorage.getItem("numToCall");
@@ -128,61 +152,45 @@
 		}
 		
 		
-		function reloadP(num) {
-			
-		    sessionStorage.setItem("reloading", "true");
-		    sessionStorage.setItem("numToCall", num);
-		    document.location.reload();
-		}
-		
-		
-	
-	</script>
+		</script>
 	
   <!-- Navigation -->
 
 	
 	<div id="menu-nav-bar">
 	   <nav class="navbar navbar-fixed-top navbar-light" >
-	   	
+	   	<a  href="index.jsp" onclick="reloadP(100);">
 	       <img class="logo" id="logoImgId" src="${pageContext.request.contextPath}/images/logo.png">
+	       </a>
 	    	
-	       	<a id="logoName" class="navbar-brand " href="index.jsp">Sumi Services</a>
+	       	<a id="logoName" class="navbar-brand " href="index.jsp" onclick="reloadP(100);">Sumi Services</a>
 	       
 
 	           <div class="collapse navbar-collapse" id="myNavbar">
 			      <ul class="nav navbar-nav" id="menuBarId">
 			        <li ><a href="aboutUs.jsp" id="hrefAboutUs" onclick="reloadP(0);">About Us</a></li>
 			        
-			        <li class="dropdown ">
-			          <a class="dropdown-toggle " data-toggle="dropdown" href="#" id="hrefIndustries">Industries<span class="caret"></span></a>
-			          <ul class="dropdown-menu nav" role="menu">
-			            <li><a href="#" onclick="reloadP(1);">I.T</a></li>
-			            <li><a href="#" onclick="reloadP(1);">Retail</a></li>
-			            <li><a href="#" onclick="reloadP(1);">BPO/CSR</a></li>
-			            <li><a href="#" onclick="reloadP(1);">Manufacturing</a></li>
+			        <li><a href="industries.jsp" id="hrefIndustries" onclick="reloadP(1);">Industries</a></li> 
 			            <!-- li><a href="adminHomePage.jsp">Admin</a></li-->
 			            
 			            
 			            <!-- li><a href="email.jsp">Email</a></li-->
-			          </ul>
-			        </li>
 			        
 			        
 			       		        
-			        <li class="dropdown ">
-			          <a class="dropdown-toggle " data-toggle="dropdown" href="#" id="hrefServices">Services<span class="caret"></span></a>
+			        <li>
+			          <a class="dropdown-toggle " data-toggle="dropdown" href="#" id="hrefServices">Services</span></a>
 			          <!-- " -->
 			     	     <ul class="dropdown-menu nav" role="menu">
-			                <li><a href="#"  onclick="reloadP(2);">CV</a></li>
+			                <li><a href="#"  onclick="reloadP(2);">CV Creation</a></li>
 			                <li><a href="#"  onclick="reloadP(2);">Staffing</a></li>
 			                <li><a href="#"  onclick="reloadP(2);">Training</a></li>
-			                <li><a href="#"  onclick="reloadP(2);">Recruiting</a></li>
+			                <li><a href="#"  onclick="reloadP(2);">Recruitment</a></li>
 			              </ul>
 			        </li>
 			        
 			        
-			        <li class="dropdown ">
+			        <li class="dropdown">
 				      <a class="dropdown-toggle " data-toggle="dropdown" href="#" id="hrefCareers" >Careers<span class="caret"></span></a>
 				     <!-- " -->
      	     				<ul class="dropdown-menu nav"  onclick="reloadP(3);">
@@ -197,7 +205,7 @@
 			        
 			        <li ><a href="#" id="hrefTestimonials" onclick="reloadP(6);">Testimonials</a></li>
 			        
-			        <li ><a href="#" id="hrefContacts" onclick="reloadP(7);">Contact Us</a></li>
+			        <li ><a href="contactUs.jsp" id="hrefContacts" onclick="reloadP(7);">Contact Us</a></li>
 		
 		
 		<!-- NOt Required as of now >       
