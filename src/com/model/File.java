@@ -8,7 +8,7 @@ public class File {
     private String fileName;
     private String contentType;
     private InputStream content;
-    private long length;
+    private double length;
    
 
 	
@@ -36,10 +36,10 @@ public class File {
 	public void setContent(InputStream content) {
 		this.content = content;
 	}
-	public long getLength() {
+	public double getLength() {
 		return length;
 	}
-	public void setLength(long length) {
+	public void setLength(double length) {
 		this.length=length;
 			
 	}
