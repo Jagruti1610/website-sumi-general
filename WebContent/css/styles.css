@@ -9,6 +9,12 @@ html, body {
     
 }
 
+table th{
+	text-align: center;
+}
+
+
+
 hr{
 	background-color: #3FACF5;
     color: #3FACF5;
@@ -283,8 +289,23 @@ span.psw {
 	width: 100%;
 	height: 100%;
 	margin: 0 0 0 0;
-	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../images/contact-us-header.jpg");/*supported by others*/
-	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../images/contact-us-header.jpg"); /* for chrome*/
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../images/contactUsHeader.jpg");/*supported by others*/
+	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../images/contactUsHeader.jpg"); /* for chrome*/
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	position: absolute;
+	
+}
+
+
+
+#candidateViewJobsHeader{
+	width: 100%;
+	height: 100%;
+	margin: 0 0 0 0;
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../images/candidateViewJobsHeader.jpg");/*supported by others*/
+	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../images/candidateViewJobsHeader.jpg"); /* for chrome*/
 	background-position: center;
   	background-repeat: no-repeat;
   	background-size: cover;
@@ -569,4 +590,26 @@ i[class^="fa fa-"] {
 .indexContainer .glyphicon{
 	font-family: 'Source Sans Pro', sans-serif;
 	
+}
+
+
+/* for candidateViewJob.jsp */
+.flex-container{
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  
+  justify-content: center;
+  align-items: center;
+  
+  width: 100%;
+  height: auto;
+  
+}
+/* for candidateViewJob.jsp */
+.inner-element{
+  width: 50%;
+  height: auto;
+  
 }
