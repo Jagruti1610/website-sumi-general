@@ -37,16 +37,19 @@
 			
 			.popup-button {
 			  font-size: 1em;
-			  padding: 10px;
-			  color: #fff;
-			  border: 2px solid orange;
-			  border-radius: 20px/50px;
-			  text-decoration: none;
-			  cursor: pointer;
-			  transition: all 0.3s ease-out;
+		      margin: 10px;
+		      color: maroon;
+		      border: 2px solid orange;
+		      border-radius: 20px/50px;
+		      text-decoration: none;
+		      cursor: pointer;
+		      background: #aef9f9;
+		      transition: all 0.3s ease-out;
 			}
 			.popup-button:hover {
 			  background: orange;
+			  text-decoration: none;
+			  cursor: pointer;
 			}
 			
 			.popup-overlay {
@@ -59,7 +62,10 @@
 			  transition: opacity 500ms;
 			  visibility: hidden;
 			  opacity: 0;
-			  
+			  position:fixed;
+			  width:100%;
+			  height:100%;
+						  
 			}
 			.popup-overlay:target {
 			  visibility: visible;
@@ -107,17 +113,6 @@
 	</head>
 	
 	<body>
-		<header>
-			<jsp:include page="header.jsp" flush="true" />
-		</header>
-		<div class="wrapper">
-			<img src="${pageContext.request.contextPath}/images/candidate-view-job-image.jpg" style="height:25%">
-			
-		</div>
-		
-		<jsp:include page="/CandidateViewJob" flush="true" />
-		
-		
 			
 		<script>
 			var globalRowId;
@@ -137,10 +132,9 @@
 			 		//alert("fetchIdFromTable(rowId)= "+rowId);
 			 		rowId=rowId.slice(-1);
 			 	    var oTable = document.getElementById('tableWithJobId');
-
 			 	    //gets rows of table
 			 	 //   var rowLength = oTable.rows.length;
-			 	    var oCells = oTable.rows.item(rowId).cells;
+			 	    var oCells = oTable.rows.item(parseInt(rowId)+1).cells;
 			 	    var cellVal = oCells.item(0).innerHTML;
 			 	//   alert("cell Val"+ cellVal);
 			 	             //alert(cellVal);
@@ -163,7 +157,8 @@
 			  
 			$(document).ready(function() {
 			//	 var fetchedId=fetchIdFromTable();
-				
+			
+						
 				$(".close").click(function() {
 				    
 				       $('#popupDiv').css("visibility", "hidden"); 
@@ -183,31 +178,31 @@
 				       
 				       $.each(responseJson, function (key, value){					
 							$("<tr>").appendTo($tableId) 
-							.append($("<tr>").append($("<th>")).text("Designation:"));
+							.append($("<tr style='font-weight:bold;'>").append($("<th>")).text("Designation:"));
 							$("<tr>").appendTo($tableId)                    
 						    .append($("<tr>").append($("<th>")).text(value.title));
 							$("<tr>").appendTo($tableId)                    
-							.append($("<tr>").append($("<th>")).text("Location:"));
+							.append($("<tr style='font-weight:bold;'>").append($("<th>")).text("Location:"));
 							$("<tr>").appendTo($tableId)                    
 							.append($("<tr>").append($("<th>")).text(value.location));
 							$("<tr>").appendTo($tableId)                    
-							.append($("<tr>").append($("<th>")).text("Qualification:"));
+							.append($("<tr style='font-weight:bold;'>").append($("<th>")).text("Qualification:"));
 							$("<tr>").appendTo($tableId)                    
 							.append($("<tr>").append($("<th>")).text(value.qualification));
 							$("<tr>").appendTo($tableId)                    
-							.append($("<tr>").append($("<th>")).text("Experience"));
+							.append($("<tr style='font-weight:bold;'>").append($("<th>")).text("Experience"));
 							$("<tr>").appendTo($tableId)                    
 							.append($("<tr>").append($("<th>")).text(value.experience));
 							$("<tr>").appendTo($tableId)                    
-							.append($("<tr>").append($("<th>")).text("Basic Skills:"));
+							.append($("<tr style='font-weight:bold;'>").append($("<th>")).text("Basic Skills:"));
 							$("<tr>").appendTo($tableId)                    
 							.append($("<tr>").append($("<th>")).text(value.basicSkills));
 							$("<tr>").appendTo($tableId)                    
-							.append($("<tr>").append($("<th>")).text("Technical Skills:"));
+							.append($("<tr style='font-weight:bold;'>").append($("<th>")).text("Technical Skills:"));
 							$("<tr>").appendTo($tableId)                    
 							.append($("<tr>").append($("<th>")).text(value.technicalSkills));
 							$("<tr>").appendTo($tableId)                    
-							.append($("<tr>").append($("<th>")).text("Description:"));
+							.append($("<tr style='font-weight:bold;'>").append($("<th>")).text("Description:"));
 							$("<tr>").appendTo($tableId)                    
 							.append($("<tr>").append($("<th>")).text(value.description));
 												
@@ -232,103 +227,91 @@
 			
 						
 		</script>
-	    
-		<h1>Job List</h1>
-		<!-- %	
-			List<Jobs> jobDetailList = request.getAttribute(jobDetailFetchList);  
+	    <header>
+			<jsp:include page="header.jsp" flush="true" />
+		</header>
+		<jsp:include page="/CandidateViewJob" flush="true" />
+		<div id="candidateViewJobsHeader">			
 		
-		%-->	
-		
-		<div class="container">
-		
-			<jsp:include page="stickyIcons.jsp" flush="true" />
-		
-    
-	
-			<div id="popupDiv" class="popup-overlay">
-				
-				<div class="popup">
-				   <a class="close" href="#">×</a><br>
-				   		<div class="content">
-								
-								<h2></h2>
-								<table id="tablePopUp">
-								
-								
-								</table>
-																		
-									  
-							</div>
-						
-					</div>
-				
-			</div>
+			<div class="indexContainer">
 			
-			
-			
-			<div>
-				<table class="table table-bordered table-striped table-condensed" id="tableWithJobId" style="width:50%; align:left;" >
-					<caption>Job  List</caption>
-					<c:set value="0" var="count"/>
-					<c:forEach items="${requestScope.jobList}" var="job">
-						<tr class="info">	
-							<td><c:out value="${job.jobId}" /></td>
-							<td><c:out value="${job.title}" /></td>
-				        	<td><c:out value="${job.location}" /></td>
-				        	<td><c:out value="${job.experience}" /></td>
-				        	<td id="<c:out value="${count}"/>">
-				        		<div class="popup-box">
-									<a id="hrefId<c:out value="${count}"/>" class="popup-button" onclick="fetchIdFromTable($(this).attr('id'));  openPopUp();" href="#"> Apply</a>
+				<jsp:include page="stickyIcons.jsp" flush="true" />
+				<div class="pageTitle" id="titleDiv"> Job Opportunities</div>
+	   			<hr>
+		
+				<div id="popupDiv" class="popup-overlay">
+					
+					<div class="popup">
+					   <a class="close" href="#titleDiv">×</a><br>
+					   		<div class="content">
 									
+									<h2></h2>
+									<table id="tablePopUp">
+									
+									
+									</table>
+																			
+										  
 								</div>
-							</td>
-					       </tr>
-					       <c:set var="count" value="${count + 1}"/>
-					</c:forEach>
+							
+						</div>
 					
+				</div>
+				
+				
+				
+				<div id="jobDisplayDiv">
+				
+					<table class="table table-bordered table-striped table-condensed" id="tableWithJobId" style="width:100%; align:center;" >
+						<tr>
+							<th> Id</th>
+							<th>Designation</th>
+							<th>Location</th>
+							<th>Experience</th>
+							<th>Apply</th>
+						</tr>
+						<c:set value="0" var="count"/>
+						<c:forEach items="${requestScope.jobList}" var="job">
+							<tr class="info">	
+								<td><c:out value="${job.jobId}" /></td>
+								<td><c:out value="${job.title}" /></td>
+					        	<td><c:out value="${job.location}" /></td>
+					        	<td><c:out value="${job.experience}" /></td>
+					        	<td id="<c:out value="${count}"/>">
+					        		
+										<a id="hrefId<c:out value="${count}"/>" class="popup-button" onclick="fetchIdFromTable($(this).attr('id'));  openPopUp();" href="#"> Apply</a>
+										
+									
+								</td>
+						       </tr>
+						       <c:set var="count" value="${count + 1}"/>
+						</c:forEach>
+						
+						
+					</table>
+				</div>
+				
+				<p style="text-align:center; margin: 30px 0 30px 0;">Didn't find a relevant job? Drop your resume with us. Our team will contact you soon.</p>
+				
+				<div id="jobApplyDiv" class="flex-container">
 					
-				</table>
-			</div>
-			
-			<div>
-				<form class="form-inline" action="${pageContext.request.contextPath}/JobApplicantServlet" method="post" enctype="multipart/form-data"> 
-					<p>Didn't find a relevant job? Drop your resume here. We will contact in future.</p>
-					<div class="form-group">
-						<input type="text" placeholder="Name" name="candidateNameTextbox" id="candidateNameTextbox" required>
-						
-						<div class="clear"></div>
-						
-						<input type="text" placeholder="Email Id" name="candidateEmailTextbox" id="candidateNameTextbox" required>
-						
-						<div class="clear"></div>
-						
-						
-						<input type="text" placeholder="Job Title" name="candidateJobTitleTextbox" id="candidateJobTitleTextbox" required>
-						
-						<div class="clear"></div>
-						
-						
-						<input type="text" placeholder="Location" name="candidateLocationTextbox" id="candidateLocationTextbox" required>
-						
-						<div class="clear"></div>
-						
-						
-					    <input type="text" placeholder="Contact number" name="candidateContactNumberTextbox" id="candidateContactNumberTextbox" required>
+					<div class="inner-element">
+						<form action="${pageContext.request.contextPath}/JobApplicantServlet" method="post" enctype="multipart/form-data"> 
+							<input type="text" placeholder="Name" name="candidateNameTextbox" id="candidateNameTextbox" required>
+							<input type="text" placeholder="Email Id" name="candidateEmailTextbox" id="candidateNameTextbox" required>
+							<input type="text" placeholder="Job Title" name="candidateJobTitleTextbox" id="candidateJobTitleTextbox" required>
+							<input type="text" placeholder="Location" name="candidateLocationTextbox" id="candidateLocationTextbox" required>
+							<input type="text" placeholder="Contact number" name="candidateContactNumberTextbox" id="candidateContactNumberTextbox" required>
+						    <input type="text" placeholder="Alternate Contact number" name="alternateContactNumberTextbox" id="alternateContactNumberTextbox" required>
+						    <label for="resumeLabel" style="margin:15px 0 0 0;"> Upload Resume</label><input type="file" name="file" required/>
+							<button type="submit" class="button" style="width:100%;" name="candidateApplyButton" id="candidateApplyButton">Apply</button>   
+						   
 					    
-					    <div class="clear"></div>
-					    
-					    
-					    <input type="text" placeholder="Alternate Contact number" name="alternateContactNumberTextbox" id="alternateContactNumberTextbox" required>
-					    
-					    <div class="clear"></div>
-					    
-					    <label for="uploadResume"> Upload Resume</label>
-					    <input type="file" name="file" required/>
-					    
-					    <button type="submit" class="button" name="candidateApplyButton" id="candidateApplyButton">Apply</button>
-				    </div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>
 </html>
+						
+						
