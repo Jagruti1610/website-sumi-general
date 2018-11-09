@@ -47,7 +47,7 @@ public class FileDAO implements Serializable{
 			ctx=new InitialContext();
 			DataSource ds=(DataSource) ctx.lookup("java:/comp/env/jdbc/javabase");
 			con=ds.getConnection();
-			rs=con.prepareStatement("select applicantId, fileName, contentType, content from job_applicant_info where applicantId="+id).executeQuery();
+			rs=con.prepareStatement("select applicantId, fileName, contentType,contentLength, content from job_applicant_info where applicantId="+id).executeQuery();
 			//stmt.setInt(1, id);
 		//	stmt.executeUpdate();
 			
@@ -59,15 +59,16 @@ public class FileDAO implements Serializable{
 				file.setFileName(rs.getString("fileName"));
 				file.setContentType(rs.getString("contentType"));
 				file.setContent(rs.getBinaryStream("content"));
+				file.setLength(rs.getDouble("contentLength"));
 				
 			}				
 			
 			//	long fileLength = 0;
-				long fileLength = file.getContent().toString().length();
-				System.out.println("File length= "+fileLength);
+			//	long fileLength = file.getContent().toString().length();
+			//	System.out.println("File length= "+fileLength);
 				
 				
-				file.setLength(fileLength);
+				
 			
 			
 				
