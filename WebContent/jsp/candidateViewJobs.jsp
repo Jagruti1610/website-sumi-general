@@ -23,6 +23,11 @@
 	
 	
 		<style>
+		
+			#jobTitleSelect{
+				width:100%;
+			}
+			
 			.popup-box {
 			  width: 50%;
 			  margin: 0 auto;
@@ -146,6 +151,19 @@
 			
 			 	}
 			 	
+			 	
+			 	window.onload=function(){
+			 		
+			 		document.getElementById("candidateApplyButton").onclick=function(){
+						
+						alert("clicked")
+						
+					};
+					
+			 	}// closed window.onload
+			 	
+			 	
+			 	
 			 	 
 				 function populatePopUp(){		 				
 					
@@ -154,10 +172,29 @@
 					
 				 }
 				 	
+				 
+			
 			  
 			$(document).ready(function() {
 			//	 var fetchedId=fetchIdFromTable();
 			
+			
+				// POPULATE 'jobTitleSelect'DROPDOWN
+				var oTable = document.getElementById('tableWithJobId');
+				var length=oTable.rows.length;
+				var newSel=document.getElementById('jobTitleSelect');
+				for(var i=1;i<=length;i++)
+				{
+					var oCells = oTable.rows.item(i).cells;
+			 	    var cellVal = oCells.item(1).innerHTML;
+			 	    opt=document.createElement("option");
+			 	    opt.value=cellVal;
+			 	    opt.text=cellVal;
+			 	    newSel.appendChild(opt);
+				}
+				
+				
+				
 						
 				$(".close").click(function() {
 				    
@@ -227,9 +264,9 @@
 			
 						
 		</script>
-	    <header>
-			<jsp:include page="header.jsp" flush="true" />
-		</header>
+	    
+		<jsp:include page="header.jsp" flush="true" />
+		
 		<jsp:include page="/CandidateViewJob" flush="true" />
 		<div id="candidateViewJobsHeader">			
 		
@@ -268,7 +305,7 @@
 							<th>Designation</th>
 							<th>Location</th>
 							<th>Experience</th>
-							<th>Apply</th>
+							<th>Details</th>
 						</tr>
 						<c:set value="0" var="count"/>
 						<c:forEach items="${requestScope.jobList}" var="job">
@@ -279,7 +316,7 @@
 					        	<td><c:out value="${job.experience}" /></td>
 					        	<td id="<c:out value="${count}"/>">
 					        		
-										<a id="hrefId<c:out value="${count}"/>" class="popup-button" onclick="fetchIdFromTable($(this).attr('id'));  openPopUp();" href="#"> Apply</a>
+										<a id="hrefId<c:out value="${count}"/>" class="popup-button" onclick="fetchIdFromTable($(this).attr('id'));  openPopUp();" href="#"> Details</a>
 										
 									
 								</td>
@@ -291,15 +328,17 @@
 					</table>
 				</div>
 				
-				<p style="text-align:center; margin: 30px 0 30px 0;">Didn't find a relevant job? Drop your resume with us. Our team will contact you soon.</p>
+				<!-- p style="text-align:center; margin: 30px 0 30px 0;">Didn't find a relevant job? Drop your resume with us. Our team will contact you soon.</p-->
 				
 				<div id="jobApplyDiv" class="flex-container">
 					
 					<div class="inner-element">
-						<form action="${pageContext.request.contextPath}/JobApplicantServlet" method="post" enctype="multipart/form-data"> 
+						
+						<form action="${pageContext.request.contextPath}/JobApplicantServlet" method="post" enctype="multipart/form-data">
+							<select id="jobTitleSelect" name="jobTitleSelect" style="width:100%;"><option value="Select">Select the job you want to apply for</option><option value="otherJob">Did not find a suitable job. Still uploading resume for future reference</option></select>
 							<input type="text" placeholder="Name" name="candidateNameTextbox" id="candidateNameTextbox" required>
 							<input type="text" placeholder="Email Id" name="candidateEmailTextbox" id="candidateNameTextbox" required>
-							<input type="text" placeholder="Job Title" name="candidateJobTitleTextbox" id="candidateJobTitleTextbox" required>
+							<!-- input type="text" placeholder="Job Title" name="candidateJobTitleTextbox" id="candidateJobTitleTextbox" required-->
 							<input type="text" placeholder="Location" name="candidateLocationTextbox" id="candidateLocationTextbox" required>
 							<input type="text" placeholder="Contact number" name="candidateContactNumberTextbox" id="candidateContactNumberTextbox" required>
 						    <input type="text" placeholder="Alternate Contact number" name="alternateContactNumberTextbox" id="alternateContactNumberTextbox" required>
@@ -311,6 +350,7 @@
 				</div>
 			</div>
 		</div>
+	  </div>
 	</body>
 </html>
 						
