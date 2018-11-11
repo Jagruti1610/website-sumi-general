@@ -27,6 +27,10 @@ import com.dao.JobApplicantDAO;
 public class JobApplicantServlet extends HttpServlet {
 	 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public DataSource dataSource;
     private JobApplicantDAO jobApplicantDAO;
     
@@ -41,7 +45,7 @@ public class JobApplicantServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 	    String name = request.getParameter("candidateNameTextbox"); 
 	    String email=request.getParameter("candidateEmailTextbox");
-	    String jobTitle = request.getParameter("candidateJobTitleTextbox");
+	    String jobTitle = request.getParameter("jobTitleSelect");
 	    String location = request.getParameter("candidateLocationTextbox");
 	    String contact = request.getParameter("candidateContactNumberTextbox");
 	    String alternateContact = request.getParameter("alternateContactNumberTextbox");
@@ -72,11 +76,7 @@ public class JobApplicantServlet extends HttpServlet {
 		try {
 			
 			jobApplicantDAO.jobApplicantDataSubmit(name, email, jobTitle, location, contact, alternateContact, fileName, contentType, contentLength,  fileContent);
-			out.println("<html><body><script type=\"text/javascript\">");
-		    out.println("alert('Applied Successfully');");
-		//	out.println("location='candidateViewJobs.jsp';");
-			out.println("</script></body></html>");
-			request.getRequestDispatcher("candidateViewJobs.jsp").forward(request, response);			
+			request.getRequestDispatcher("thankYouPageCandidateViewJobs.jsp").forward(request, response);			
 			
 			
 		} catch (SQLException | NullPointerException e) {
