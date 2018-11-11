@@ -199,11 +199,11 @@
 			              </ul>
 			        </li>
 			        
-			        <li ><a href="clientContact.jsp" id="hrefClients" onclick="reloadP(4);">Client</a></li>
+			        <li ><a href="clientPage.jsp" id="hrefClients" onclick="reloadP(4);">Client</a></li>
+			        			             
+			        <li ><a href="#" id="hrefTestimonials" onclick="reloadP(6);">Testimonials</a></li>
 			        
 			        <li><a href="candidateViewJobs.jsp" id="hrefJobs" onclick="reloadP(5);">Jobs</a></li>
-			        
-			        <li ><a href="#" id="hrefTestimonials" onclick="reloadP(6);">Testimonials</a></li>
 			        
 			        <li ><a href="contactUs.jsp" id="hrefContacts" onclick="reloadP(7);">Contact Us</a></li>
 		
